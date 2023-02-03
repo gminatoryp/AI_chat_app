@@ -3,8 +3,8 @@ import * as dotenv from 'dotenv';
 import cors from 'cors';
 
 import connectDB from './mongodb/connect.js';
-import postRoutes from './routes/postRoutes'
-import aiRoutes from './routes/aiRoutes'
+import postRoutes from './routes/postRoutes.js';
+import aiRoutes from './routes/aiRoutes.js';
 
 dotenv.config();
 

@@ -1,8 +1,8 @@
-import mongoose, { mongo } from 'mongoose';
+import mongoose from 'mongoose';
 
 //Function to connect to mongodb
 const connectDB = (url) => {
-    mongoose.set('strickQuery, true')
+    mongoose.set('strictQuery', true)
 
     //connecting to db
     mongoose.connect(url)
