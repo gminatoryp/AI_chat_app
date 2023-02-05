@@ -1,4 +1,4 @@
-import express, { response } from 'express';
+import express from 'express';
 import * as dotenv from 'dotenv';
 import { Configuration, OpenAIApi } from 'openai';
 
@@ -16,7 +16,7 @@ const openai = new OpenAIApi(configuration);
 
 //demo route
 router.route('/').get((req, res) => {
-    res.send('Hello from AI Image Generator')
+    res.status(200).json({message: 'Hello from AI Image Generator'})
 })
 
 //ai route
