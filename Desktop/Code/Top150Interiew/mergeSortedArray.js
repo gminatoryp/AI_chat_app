@@ -12,8 +12,9 @@
 // Output: [1,2,2,3,5,6]
 // Explanation: The arrays we are merging are [1,2,3] and [2,5,6].
 // The result of the merge is [1,2,2,3,5,6] with the underlined elements coming from nums1.
-// Example 2:
 
+
+// Example 2:
 // Input: nums1 = [1], m = 1, nums2 = [], n = 0
 // Output: [1]
 // Explanation: The arrays we are merging are [1] and [].
@@ -27,5 +28,51 @@
  * @return {void} Do not return anything, modify nums1 in-place instead.
  */
 var merge = function(nums1, m, nums2, n) {
+    let merged1 = []
+    let merged2 = []
+
+    for(let i = 0; i < nums1.length; i++) {
+        if( nums1[i] <= m) {
+            merged1 = nums1[i]
+            i++
+        }
+    }
     
+    for(let j = 0; j < nums2.length; j++){
+        if ( nums2[j] <= n) {
+            merged2 = nums2[j]
+            j++
+        }
+    }
+
+};
+
+console.log(merge([1,2,3,], 1, [5,6],1))
+
+
+// solution
+
+var merge = function(nums1, m, nums2, n) {
+    let i = m - 1; // Pointer for nums1
+    let j = n - 1; // Pointer for nums2
+    let k = m + n - 1; // Pointer for the merged array
+    
+    // Merge nums1 and nums2 from the end
+    while (i >= 0 && j >= 0) {
+        if (nums1[i] > nums2[j]) {
+            nums1[k] = nums1[i];
+            i--;
+        } else {
+            nums1[k] = nums2[j];
+            j--;
+        }
+        k--;
+    }
+    
+    // If there are remaining elements in nums2, append them to nums1
+    while (j >= 0) {
+        nums1[k] = nums2[j];
+        j--;
+        k--;
+    }
 };
