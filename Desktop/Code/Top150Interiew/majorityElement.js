@@ -38,3 +38,34 @@ var majorityElement = function(nums) {
 };
 
 console.log(majorityElement([1,1,2,2,3,3]))
+
+//solution
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var majorityElement = function(nums) {
+    let hashmap = new Map();
+    
+    // Count the frequency of each element
+    for (let num of nums) {
+        if (hashmap.has(num)) {
+            hashmap.set(num, hashmap.get(num) + 1);
+        } else {
+            hashmap.set(num, 1);
+        }
+    }
+    
+    // Find the element with maximum frequency
+    let majorityElement = null;
+    let maxFrequency = 0;
+    for (let [num, frequency] of hashmap) {
+        if (frequency > maxFrequency) {
+            majorityElement = num;
+            maxFrequency = frequency;
+        }
+    }
+    
+    return majorityElement;
+};
