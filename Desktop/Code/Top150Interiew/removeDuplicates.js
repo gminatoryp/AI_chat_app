@@ -48,4 +48,20 @@ return newArray.length
 };
 
 console.log(removeDuplicates([1,1,2,2,3,3]))
-console.log(removeDuplicates(nums[1,2,3,1,2,3]))
+console.log(removeDuplicates([1,2,3,1,2,3]))
+
+//solution
+
+var removeDuplicates = function(nums) {
+    let newArray = [];
+    for (let i = 0; i < nums.length; i++) {
+        if (newArray.indexOf(nums[i]) === -1) {
+            newArray.push(nums[i]);
+        }
+    }
+    return newArray.length;
+};
+
+console.log(removeDuplicates([1, 1, 2, 2, 3, 3]));
+console.log(removeDuplicates([1, 2, 3, 1, 2, 3]));
+console.log(removeDuplicates([1, 2, 3, 1, 2, 3,4,5]));
