@@ -36,8 +36,12 @@
  * @param {string} s
  * @return {number}
  */
+
+
+
 var romanToInt = function(s) {
-    let roman = {
+
+    const roman = {
         I: 1,
         V: 5,
         X: 10,
@@ -48,7 +52,67 @@ var romanToInt = function(s) {
     }
 
 
-
 };
 
 console.log(romanToInt(II))
+
+// solution
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var romanToInt = function(s) {
+    var d, num;
+    
+    d = {
+        'I': 1,
+        'V': 5,
+        'X': 10,
+        'L': 50,
+        'C': 100,
+        'D': 500,
+        'M': 1000
+    };
+    
+    num = 0;
+    for (var i=s.length-1; i>=0; i--) {
+        num += d[s[i]];
+        if (d[s[i]] > d[s[i-1]]) {
+            num -= d[s[i-1]];
+            i--;
+        }
+    }
+    return num;
+
+};
+
+console.log(romanToInt('LLL'))
+
+//solution
+var baseTranslator = {
+        I: 1,
+        V: 5,
+        X: 10,
+        L: 50,
+        C: 100,
+        D: 500,
+        M: 1000
+    }
+
+var prev = 0,
+    result = 0;
+
+for (var i = s.length - 1; i >= 0; i--) {
+    var key = s[i],
+        num = baseTranslator[key];
+
+    if (num < prev) {
+        result -= num;
+    } else {
+        result += num;
+    }
+
+    prev = num;
+}
+
+return result;
