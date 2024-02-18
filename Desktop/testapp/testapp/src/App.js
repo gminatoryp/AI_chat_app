@@ -1,22 +1,24 @@
 
+// useeffect hook
+import { useState, useEffect } from 'react';
+
 import './App.css';
 
-//create a component
-const Person = (props) => {
-  return (
-    <>
-    <h1> Name: {props.name}</h1>
-    <h2> Last name: {props.LastName}</h2>
-    <h2> Age: {props.age}</h2>
-    </>
-  )
-}
 
 const App = () => {
+  const [counter, setCounter] = useState(0)
+
+  //useeffect
+  //Important: Never manually change the state of any state hook
+  useEffect(() => {
+    alert('You have changed the counter to ' + counter)
+  }, [counter]) // there is a second parameter in useeffect called a dependency array
+
   return (
     <div className="App">
-      <Person name={'george'} LastName={'park'} age={57}/>
-      <Person name='yoon' LastName='gi' age={10+40}/>
+      <button onClick={() => setCounter((prevCount) => prevCount-1)}>-</button>
+      <h1>{counter}</h1>
+      <button onClick={() => setCounter((prevCount) => prevCount+1)}>+</button>
     </div>
   );
 }

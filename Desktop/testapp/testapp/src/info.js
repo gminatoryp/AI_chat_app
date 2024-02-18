@@ -1,3 +1,13 @@
+/* Most important things in react
+1. components
+2. state (hooks)
+3. props 
+4. events (onclick)
+*/
+
+
+
+
 // Ternary operator code 
 const App = () => {
   const name = 'george'
@@ -23,6 +33,8 @@ const App = () => {
 }
 
 
+
+
 // Props code
 //create a component
 const Person = (props) => {
@@ -43,3 +55,23 @@ const App = () => {
     </div>
   );
 }
+
+// usestate hook
+import { useState } from 'react';
+
+import './App.css';
+
+
+const App = () => {
+  const [counter, setCounter] = useState(0)
+
+  return (
+    <div className="App">
+      <button onClick={() => setCounter((prevCount) => prevCount-1)}>-</button>
+      <h1>{counter}</h1>
+      <button onClick={() => setCounter((prevCount) => prevCount+1)}>+</button>
+    </div>
+  );
+}
+
+export default App;
