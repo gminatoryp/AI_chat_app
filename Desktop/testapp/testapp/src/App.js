@@ -6,7 +6,12 @@ import './App.css'
 
 const API_URL="http://www.omdbapi.com?apikey=4a373b48"
 
-
+const movie1 = {
+Title: "Superman",
+Type: "movie",
+Year: "1978",
+imdbID: "tt0078346"
+}
 
 const App = () => {
 
@@ -40,7 +45,16 @@ const App = () => {
             </div>
 
             <div className="container">
+                <div className="movie">
+                    <div>
+                        <p>{movie1.Year}</p>
+                    </div>
 
+                    <div>
+                        <img src={movie1.Poster !== 'N/A' ? movie1.Poster : 'https://via.placeholder.com/400'} alt={movie1.Title}/>
+                    </div>
+
+                </div>
             </div>
 
         </div>
