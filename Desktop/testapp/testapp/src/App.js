@@ -1,26 +1,50 @@
+import {useEffect} from "react";
+import './App.css'
+// import SearchIcon from './search.svg'
 
-// useeffect hook
-import { useState, useEffect } from 'react';
+// API Key: 4a373b48
 
-import './App.css';
+const API_URL="http://www.omdbapi.com?apikey=4a373b48"
+
 
 
 const App = () => {
-  const [counter, setCounter] = useState(0)
 
-  //useeffect
-  //Important: Never manually change the state of any state hook
-  useEffect(() => {
-    alert('You have changed the counter to ' + counter)
-  }, [counter]) // there is a second parameter in useeffect called a dependency array
+    const searchMovies = async (title) => {
+        const response = await fetch(`${API_URL}&s=${title}`)
+        const data = await response.json()
 
-  return (
-    <div className="App">
-      <button onClick={() => setCounter((prevCount) => prevCount-1)}>-</button>
-      <h1>{counter}</h1>
-      <button onClick={() => setCounter((prevCount) => prevCount+1)}>+</button>
-    </div>
-  );
+        console.log(data.Search) // Search is from the inspect output in Chrome
+    }
+
+    useEffect(() => {
+        searchMovies('superman')
+    }, [])
+
+    return (
+        <div className="app">
+            <h1>MovieLand</h1>
+
+            <div className="search">
+                <input 
+                    placeholder="Search for movies"
+                    value="Superman"
+                    onChange={() => {}}
+                />
+                {/* <img 
+                    src={SearchIcon}
+                    alt='search'
+                    onClick={() => {}}
+                
+                /> */}
+            </div>
+
+            <div className="container">
+
+            </div>
+
+        </div>
+    )
 }
 
 export default App;
