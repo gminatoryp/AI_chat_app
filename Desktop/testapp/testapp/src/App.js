@@ -1,5 +1,6 @@
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import './App.css'
+import MovieCard from "./MovieCard";
 // import SearchIcon from './search.svg'
 
 // API Key: 4a373b48
@@ -14,12 +15,13 @@ imdbID: "tt0078346"
 }
 
 const App = () => {
+    const [movies, setMovies] = useState([])
 
     const searchMovies = async (title) => {
         const response = await fetch(`${API_URL}&s=${title}`)
         const data = await response.json()
 
-        console.log(data.Search) // Search is from the inspect output in Chrome
+        setMovies(data.Search) // Search is from the inspect output in Chrome
     }
 
     useEffect(() => {
@@ -44,18 +46,21 @@ const App = () => {
                 /> */}
             </div>
 
-            <div className="container">
-                <div className="movie">
-                    <div>
-                        <p>{movie1.Year}</p>
-                    </div>
-
-                    <div>
-                        <img src={movie1.Poster !== 'N/A' ? movie1.Poster : 'https://via.placeholder.com/400'} alt={movie1.Title}/>
-                    </div>
-
+            {movies?.length > 0
+                ? (
+                <div className="container">
+                    {movies.map((movie) => (
+                        <MovieCard movie={movie} />
+                    ))}
                 </div>
-            </div>
+                ) : (
+                <div className="empty">
+                    <h2>No movies found</h2>
+                </div>
+                )
+            }
+
+
 
         </div>
     )
