@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import './App.css'
 import MovieCard from "./MovieCard";
-import SearchIcon from './search.svg'
+// import SearchIcon from './search.svg'
 
 // API Key: 4a373b48
 
@@ -30,7 +30,7 @@ const App = () => {
     };
 
     useEffect(() => {
-        searchMovies('superman');
+        searchMovies('batman');
     }, []);
 
     return (
@@ -43,11 +43,11 @@ const App = () => {
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                 />
-                <img 
+                {/* <img 
                     src={SearchIcon}
                     alt='search'
                     onClick={handleSearch}
-                />
+                /> */}
             </div>
 
             {movies?.length > 0 ? (
