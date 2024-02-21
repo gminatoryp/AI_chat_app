@@ -57,3 +57,7 @@ var strStr = function(haystack, needle) {
 
   return -1
 }
+
+console.log(strStr('great','eat'))
+console.log(strStr('feet', 'bat'))
+console.log(strStr('brash', 'rash'))
